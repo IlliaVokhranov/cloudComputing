@@ -1,10 +1,9 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 import os
-import psycopg2
 
 app = Flask(__name__)
-
-DATABASE_URL = os.environ['DATABASE_URL']
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+db = SQLAlchemy(app)
 
 from app import routes

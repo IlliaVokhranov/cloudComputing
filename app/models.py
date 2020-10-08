@@ -1,10 +1,10 @@
-from app import conn
+from app import db
 
 
-class TodoItem(conn.Model):
-    id = conn.Column(conn.Integer, primary_key=True)
-    text = conn.Column(conn.String(200))
-    complete = conn.Column(conn.Boolean)
+class Todo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String(200))
+    complete = db.Column(db.Boolean)
 
     def __repr__(self):
         return self.text
