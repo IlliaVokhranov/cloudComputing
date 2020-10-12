@@ -33,3 +33,5 @@ def delete(id):
     todo = TodoItem.query.filter_by(id=int(id)).first()
     db.session.remove(todo)
     db.session.commit()
+
+    return redirect(url_for(home))
