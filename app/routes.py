@@ -30,8 +30,7 @@ def complete(id):
 
 @app.route('/delete/<id>')
 def delete(id):
-    todo = TodoItem.query.filter_by(id=int(id)).first()
-    db.session.remove(todo)
+    TodoItem.query.filter_by(id=int(id)).first().delete()
     db.session.commit()
 
-    return redirect(url_for(home))
+    return redirect(url_for('home'))
